@@ -12,5 +12,5 @@ Expected behavior:
 
 - Ask intake only if the idea is still too vague.
 - Build a breadth-first decision map across users, success criteria, data inputs, prioritization method, collaboration, privacy, evaluation, rollout, and pricing.
-- Generate 30 hard questions with recommended answers.
+- Generate the requested number of hard questions with recommended answers.
 - Include an adaptive map showing how rejecting recommendations changes later questions.

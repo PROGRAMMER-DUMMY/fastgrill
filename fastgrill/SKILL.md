@@ -1,13 +1,13 @@
 ---
 name: fastgrill
-description: Generate a hard 30-question deep-dive decision audit for an uncertain plan, architecture, process, implementation, product, or operational decision. Use when the user asks for fastgrill, grill-me depth all at once, 30 questions, deep dive questions, an expert questionnaire, adversarial review, or recommended answers accepted by default.
+description: Generate a hard, adaptive deep-dive decision audit for an uncertain plan, architecture, process, implementation, product, or operational decision. Use when the user asks for fastgrill, grill-me depth all at once, any number of questions, deep dive questions, an expert questionnaire, adversarial review, or recommended answers accepted by default.
 ---
 
 # Fastgrill
 
 ## Purpose
 
-Use `fastgrill` when the user wants a deep, expert-level decision audit quickly: 30 hard questions across goals, constraints, architecture, execution, risk, security, operations, evaluation, rollout, and governance. Generate the audit as a compact adaptive decision tree, not as 30 independent checklist questions.
+Use `fastgrill` when the user wants a deep, expert-level decision audit quickly: as many hard questions as the user asks for, across goals, constraints, architecture, execution, risk, security, operations, evaluation, rollout, and governance. If the user does not specify a number, choose a useful size for the task, usually 10-30 questions. Generate the audit as a compact adaptive decision tree, not as independent checklist questions.
 
 Unlike `grill-me`, this skill does not ask one question at a time. It creates the full question set in one response and includes recommended answers the user can accept, reject, or modify. If the user says they approve the recommended answers, treat those recommendations as selected decisions and produce the resulting plan or implementation direction.
 
@@ -16,7 +16,7 @@ Unlike `grill-me`, this skill does not ask one question at a time. It creates th
 `fastgrill` includes the full `grill-me` decision discipline, but changes the interaction pattern from a one-question-at-a-time interview to a complete expert audit delivered in one response.
 
 - Use `grill-me` pressure, specificity, option framing, recommended answers, rationale, compatibility notes, feedback notes, dependency ordering, and answer-dependent follow-up logic.
-- Use `clarify-ambiguity` before generating the 30-question audit only when a wrong assumption would materially change the output or waste significant work.
+- Use `clarify-ambiguity` before generating the audit only when a wrong assumption would materially change the output or waste significant work.
 - If the ambiguity is low-risk, state the assumption and proceed.
 - If the answer can be discovered from the codebase, inspect the codebase instead of asking the user.
 - If the user later asks to continue interactively, switch to asking exactly one highest-leverage unresolved question at a time using the embedded Grill-Me Interview Protocol below.
@@ -26,7 +26,7 @@ Unlike `grill-me`, this skill does not ask one question at a time. It creates th
 Use this skill when the user asks for any of the following:
 
 - `fastgrill`
-- `30 questions`
+- any requested number of questions, such as `10 questions`, `20 questions`, or `30 questions`
 - `give me all questions`
 - `expert questionnaire`
 - `deep dive questions`
@@ -54,7 +54,7 @@ Do not use when:
    - Ask one targeted question only if missing information materially changes the audit.
    - Otherwise state the assumption and proceed.
 6. Build a breadth-first decision map across goals, users, constraints, system shape, risks, validation, rollout, and governance.
-7. Generate 30 expert-level questions grouped by decision area.
+7. Generate the requested number of expert-level questions grouped by decision area.
 8. For each question include options, recommended answer, evidence needed, failure mode, dependency/adaptation note, compatibility, and feedback note.
 9. If the user pre-approves recommendations, mark all recommended answers as accepted and add a concise accepted-decision summary.
 10. If implementation is requested, convert accepted decisions into an execution plan or code changes.
@@ -112,7 +112,7 @@ If a draft question could be answered with "it depends", rewrite it until the op
 
 ## Adaptive Audit Rules
 
-Generate the 30 questions as a decision tree with spread, not as isolated prompts.
+Generate the questions as a decision tree with spread, not as isolated prompts.
 
 For each question, specify:
 
@@ -141,7 +141,7 @@ Default to compact output. A good fastgrill response should usually fit in 6k-9k
 - Keep each table cell short: one sentence or sentence fragment.
 - Put detailed branching only in the adaptive map, not repeated in every row.
 - If the user asks for maximum depth, expand to 10k+ tokens only when the task justifies it.
-- If the platform or context budget is tight, produce 15 questions first and label it as `Half fastgrill`; otherwise produce all 30.
+- If the platform or context budget is tight, produce fewer questions first and label the audit size clearly, such as `Compact fastgrill: 10 questions`.
 
 ## Embedded Grill-Me Interview Protocol
 
@@ -204,7 +204,7 @@ Assumption: ...
 
 Accepted-default mode: on|off
 
-## 30-Question Decision Audit
+## Decision Audit
 
 | # | Area | Deep-Dive Question | Options | Recommended Answer | Evidence Needed | Failure Mode If Wrong | Depends / Adapts |
 |---:|---|---|---|---|---|---|---|
@@ -227,7 +227,7 @@ Accepted-default mode: on|off
 
 ## Question Coverage Checklist
 
-The 30 questions should cover these areas when relevant:
+The questions should cover these areas when relevant. For a shorter audit, merge related areas while keeping coverage balanced. For a longer audit, split the highest-risk areas into multiple questions:
 
 1. Goal and success criteria
 2. Users and roles
@@ -282,6 +282,6 @@ $fastgrill over slash commands for Gemini, Claude, and Codex CLI sessions. I app
 Expected behavior:
 
 - Inspect existing slash-command implementation if available.
-- Produce 30 advanced questions with options and recommended answers.
+- Produce the requested number of advanced questions with options and recommended answers.
 - Treat recommended answers as accepted.
 - Summarize the chosen architecture and next implementation plan.

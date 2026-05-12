@@ -1,11 +1,11 @@
 # Fastgrill
 
-Fastgrill is a model-agnostic AI workflow for turning vague ideas, architecture plans, product decisions, and implementation proposals into a 30-question adaptive decision audit.
+Fastgrill is a model-agnostic AI workflow for turning vague ideas, architecture plans, product decisions, and implementation proposals into an adaptive decision audit.
 
 It compresses a long `grill-me` style interview into one structured pass:
 
 ```text
-intake -> breadth-first decision map -> 30 deep questions -> recommended defaults -> adaptive follow-up map
+intake -> breadth-first decision map -> deep questions -> recommended defaults -> adaptive follow-up map
 ```
 
 ## Why Use It
@@ -22,7 +22,7 @@ Fastgrill is designed for the middle path:
 - choose recommended answers as provisional defaults
 - adapt later questions from those defaults
 - preserve coverage across goals, architecture, security, testing, rollout, operations, and governance
-- output a shareable decision artifact
+- output something you can actually review, share, or turn into a plan
 
 It can be used as:
 
@@ -60,10 +60,10 @@ No complex setup is required.
 2. Copy the whole file.
 3. Paste it into your CLI agent's instruction file, custom command, reusable prompt, or project rules.
 4. Save it.
-5. Ask the agent to use Fastgrill.
+5. Ask the agent to use Fastgrill with however many questions you want.
 
 ```text
-Use Fastgrill on this idea/proposal. Ask intake first if the context is too vague.
+Use Fastgrill on this idea/proposal. Ask intake first if the context is too vague. Give me 15 questions.
 ```
 
 For Claude Code, Gemini CLI, Codex CLI, Aider-style tools, or internal terminal agents, treat `SKILL.md` as a reusable planning instruction.
@@ -104,11 +104,11 @@ Use fastgrill on this AI agent workflow and produce the accepted decision summar
 
 ## Output Shape
 
-Fastgrill produces:
+Fastgrill usually produces:
 
 - assumptions
 - accepted-default mode
-- 30-question decision audit
+- the number of questions you asked for
 - evidence needed
 - failure modes if wrong
 - dependency and adaptation notes
