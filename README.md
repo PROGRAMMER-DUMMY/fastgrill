@@ -52,25 +52,31 @@ It can be used as:
 
 Use a live one-question-at-a-time interview when the human's answers are likely to radically change the next question. Fastgrill simulates that path using recommended defaults, but it cannot replace real human feedback for highly uncertain decisions.
 
-## Use With Any Model Or CLI Agent
+## Quick Setup For CLI Agents
 
-Copy the contents of `fastgrill/SKILL.md` into the instruction area for your model, coding agent, or CLI agent. Then ask:
+No complex setup is required.
+
+1. Open `fastgrill/SKILL.md`.
+2. Copy the whole file.
+3. Paste it into your CLI agent's instruction file, custom command, reusable prompt, or project rules.
+4. Save it.
+5. Ask the agent to use Fastgrill.
 
 ```text
 Use Fastgrill on this idea/proposal. Ask intake first if the context is too vague.
 ```
 
-For tools that do not support Codex skills, treat `SKILL.md` as a reusable system prompt, project instruction, command preset, or Markdown workflow.
+For Claude Code, Gemini CLI, Codex CLI, Aider-style tools, or internal terminal agents, treat `SKILL.md` as a reusable planning instruction.
 
-For CLI coding agents such as Claude Code, Gemini CLI, Codex CLI, Aider-style tools, or internal terminal agents, Fastgrill works best as a pre-implementation planning command:
+Fastgrill works best as a pre-implementation planning command:
 
 ```text
 Use Fastgrill before editing files. Build the adaptive decision audit, choose recommended defaults, then produce the execution plan.
 ```
 
-## Codex Install
+## Optional Codex Skill Install
 
-Copy the `fastgrill/` folder into your Codex skills directory:
+If you use Codex skills, you can also copy the `fastgrill/` folder into your Codex skills directory:
 
 ```text
 ~/.codex/skills/fastgrill/
